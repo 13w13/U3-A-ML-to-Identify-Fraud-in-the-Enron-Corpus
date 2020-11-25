@@ -29,4 +29,11 @@ First, the dataset will be manually explored to find outliers and trends and gen
 - my_dataset.pkl: Pickle file for final dataset from poi_id.py. 
 - my_feature_list.pkl: Pickle file for final feature list from poi_id.py.   
 
-Others function within poi_id.py - feature_creation: Functions for creating two new features - 'poi_email_ratio' and 'exercised_stock_options'. - select_k_best : Function for selecting k best features using sklearn’s SelectKBest, sorts them in descending order of score. - PlotOutliers: Function for drawing plots of any two features colored by POI and non-POI. /tools/:  feature_format.py: Functions to convert data from dictionary format into numpy arrays and separate target label from features to make it suitable for machine learning processes.
+Others function within poi_id.py 
+- feature_creation: Functions for creating two new features  
+- 'poi_email_ratio' and 'exercised_stock_options'. 
+- select_k_best : Function for selecting k best features using sklearn’s SelectKBest, sorts them in descending order of score. 
+- PlotOutliers: Function for drawing plots of any two features colored by POI and non-POI.     
+
+/tools/:    
+- feature_format.py: Functions to convert data from dictionary format into numpy arrays and separate target label from features to make it suitable for machine learning processes.
