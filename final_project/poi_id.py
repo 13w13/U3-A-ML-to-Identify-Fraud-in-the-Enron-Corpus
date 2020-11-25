@@ -1,5 +1,6 @@
 #!/usr/bin/python -W ignore::DeprecationWarning
 
+import numpy as np
 import sys
 import pickle
 sys.path.append("../tools/")
