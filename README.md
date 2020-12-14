@@ -4,7 +4,7 @@
 
 Antoine Settelen, Edgar Jullien, Simon Weiss   
 
-Use poi_id_notebook in final_project folder
+Use poi_id_notebook in final_project folder    
 **Our final score with logistic regression :   
 Accuracy: 0.88736   
 Precision: 0.60302   
