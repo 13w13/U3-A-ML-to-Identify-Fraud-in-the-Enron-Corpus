@@ -879,7 +879,7 @@ The best parameters are : {'criterion': 'gini',
  'min_samples_leaf': 1,
  'min_samples_split': 20}
  We therefore launch the evaluation of our model.
-# In[94]:
+# In[56]:
 
 
 clf_best_tree=DecisionTreeClassifier(criterion= 'gini',
@@ -888,7 +888,7 @@ clf_best_tree=DecisionTreeClassifier(criterion= 'gini',
  min_samples_split = 20)
 
 
-# In[95]:
+# In[57]:
 
 
 evaluate_clf(clf_best_tree,features,labels)
@@ -1042,7 +1042,7 @@ clf_best_log_f1=Pipeline(steps=[('std_slc', StandardScaler()),
 
 # Then we run the evaluate with our tunes parameters 
 
-# In[70]:
+# In[ ]:
 
 
 evaluate_clf(clf_best_log_f1,features,labels)
@@ -1052,7 +1052,7 @@ With this evaluation, we have a result of :
     recall:    0.6074877344877344
     accuracy:    0.8709285714285716
 Now we can test with the tester made by our excellent teacher.
-# In[71]:
+# In[ ]:
 
 
 import tester
@@ -1066,7 +1066,7 @@ tester.main()
 
 # #### Percetron
 
-# In[72]:
+# In[ ]:
 
 
 n_features = np.arange(1, 20)
@@ -1089,7 +1089,7 @@ k_lcf= GridSearchCV(pipe_p, param_grid=param_grid, scoring='f1', cv = cv)
 k_lcf.fit(features, labels)
 
 
-# In[73]:
+# In[ ]:
 
 
 k_lcf.best_score_
@@ -1097,27 +1097,27 @@ k_lcf.best_params_
 
 As we can see, the best results appear with 11 features.
 Now we are interested in the internal parameters of the logistic regression.
-# In[74]:
+# In[ ]:
 
 
 num_features=11
 
 
-# In[75]:
+# In[ ]:
 
 
 best_features = get_k_best(my_dataset, my_feature_list, num_features)
 my_feature_list = [target_label] + list(set(best_features.keys()))
 
 
-# In[76]:
+# In[ ]:
 
 
 data = featureFormat(my_dataset, my_feature_list,sort_keys = True)
 labels, features = targetFeatureSplit(data)
 
 
-# In[77]:
+# In[ ]:
 
 
 pipe_per = Pipeline([
@@ -1125,7 +1125,7 @@ pipe_per = Pipeline([
     ('classifier', Perceptron())])
 
 
-# In[78]:
+# In[ ]:
 
 
 # define models and parameters
@@ -1143,19 +1143,19 @@ grid_search = GridSearchCV(estimator=pipe_per, param_grid=grid, n_jobs=-1, cv=cv
 grid_result = grid_search.fit(features, labels)
 
 
-# In[79]:
+# In[ ]:
 
 
 grid_result.best_estimator_
 
 
-# In[80]:
+# In[ ]:
 
 
 grid_result.best_params_
 
 
-# In[81]:
+# In[ ]:
 
 
 clf_best_per_f1=Pipeline(steps=[('scaler', MinMaxScaler()),
@@ -1164,13 +1164,13 @@ clf_best_per_f1=Pipeline(steps=[('scaler', MinMaxScaler()),
                             shuffle=False))])
 
 
-# In[82]:
+# In[ ]:
 
 
 evaluate_clf(clf_best_per_f1,features,labels)
 
 
-# In[83]:
+# In[ ]:
 
 
 import tester
@@ -1183,44 +1183,44 @@ tester.main()
 
 # #### 5.4 Try staking the 2 models
 
-# In[84]:
+# In[ ]:
 
 
 #pip install mlxtend  
 
 
-# In[85]:
+# In[ ]:
 
 
 from mlxtend.classifier import StackingClassifier
 
 
-# In[86]:
+# In[ ]:
 
 
 num_features=7
 
 
-# In[87]:
+# In[ ]:
 
 
 best_features = get_k_best(my_dataset, my_feature_list, num_features)
 my_feature_list = [target_label] + list(set(best_features.keys()))
 
 
-# In[88]:
+# In[ ]:
 
 
 m_clf = StackingClassifier(classifiers=[clf_best_log_f1,clf_best_tree,clf_best_per_f1],use_probas=False,meta_classifier=clf_best_log_f1)
 
 
-# In[89]:
+# In[ ]:
 
 
 evaluate_clf(m_clf,features,labels)
 
 
-# In[90]:
+# In[ ]:
 
 
 import tester
@@ -1234,7 +1234,7 @@ tester.main()
 
 # When we compare the result from the evaluate function and the tester, it seems that our logistic regression model has the best score after paramaters tuning. This result confirms the relevance of our pre-processing step. We don't think that we can increase anymore our recall and precision without more information about the dataset.
 
-# In[91]:
+# In[ ]:
 
 
 clf = clf_best_log_f1
@@ -1243,7 +1243,7 @@ clf = clf_best_log_f1
 # dump your classifier, dataset and features_list so   
 # anyone can run/check your results
 
-# In[92]:
+# In[ ]:
 
 
 pickle.dump(clf, open("../final_project/my_classifier.pkl", "wb"))
@@ -1258,14 +1258,14 @@ pickle.dump(my_feature_list, open("../final_project/my_feature_list.pkl", "wb"))
 # that the version of poi_id.py that you submit can be run on its own and   
 # generates the necessary .pkl files for validating your results.  
 
-# In[93]:
+# In[ ]:
 
 
 dump_classifier_and_data(clf, my_dataset, features_list)
 
 
-# In[10]:
+# In[ ]:
 
 
-jupyter nbconvert --to script *.ipynb
+
 
